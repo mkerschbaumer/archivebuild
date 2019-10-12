@@ -6,8 +6,18 @@
 RELEVANT_FILES=""
 SUFFIX_LIST=$(cat "$ARCHIVEBUILD_WILDCARD_FILE")
 for suffix in $SUFFIX_LIST; do
-    RELEVANT_FILES+=$(get_relevant_files "$suffix")
+    MATCHING=$(get_relevant_files "$suffix")
+    if [ -n "$MATCHING" ]; then
+        # Ensure proper spacing between entries
+        RELEVANT_FILES+=" $MATCHING"
+    fi
 done
+
+# Don't continue execution if no archives can be created.
+if [ -z "$RELEVANT_FILES" ]; then
+    echo "No relevant files found => no archives to be created"
+    exit 0
+fi
 
 # Folders, for which archives should be created. Only the top-level directory is used
 # (as archive name).
@@ -51,7 +61,8 @@ for folder in $FOLDER_CANDIDATES; do
 .$ARCHIVEBUILD_FILE_FORMAT"
     RELEVANT_FILES=""
     for suffix in $SUFFIX_LIST; do
-        RELEVANT_FILES+=$(cd $folder && get_relevant_files "$suffix")
+        MATCHING=$(cd $folder && get_relevant_files "$suffix")
+        RELEVANT_FILES+=" $MATCHING"
     done
 
     create_archive
