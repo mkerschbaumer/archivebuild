@@ -32,7 +32,7 @@ function create_archive() {
     case "$ARCHIVEBUILD_FILE_FORMAT" in
     "tar.gz")
         cd $folder && \
-            tar -uvf "$TMPFILE" -- $RELEVANT_FILES && \
+            tar -cvf "$TMPFILE" -- $RELEVANT_FILES && \
             gzip "$TMPFILE" && \
             mv "$TMPFILE.gz" "../$ARCHIVE_NAME" && \
             rm -f "$TMPFILE" && \
