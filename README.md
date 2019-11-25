@@ -2,8 +2,8 @@
 
 This repo contains scripts to automate archive creation for course submissions.
 A prefix can be used, if the course requires a specific archive-name format
-like `<group-number>-<surename>-week<nr>.tar.gz`. Currently only .tar.gz files
-are supported.
+like `<group-number>-<surename>-week<nr>.tar.gz`. Currently only .tar.gz and
+.zip files are supported.
 
 Archives can be created using [Gitlab CI](https://docs.gitlab.com/ee/ci/). It
 has been tested with the docker-image [bash:5](https://hub.docker.com/_/bash).
@@ -33,7 +33,7 @@ General options can be configured by setting environment variables. The
 following options are available:
 
 + `ARCHIVEBUILD_FILE_FORMAT`: The file format to use for the archives to
-    create. Currently only ".tar.gz" is supported.
+    create. Currently only "tar.gz" and "zip" is supported.
 + `ARCHIVEBUILD_PREFIX`: The prefix to use for archive-file names. If a
     specific naming scheme like `<group-number>-<surename>-week<nr>.tar.gz` is
     required, the prefix can be set to `<group-number>-<surename>-`. 

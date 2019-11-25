@@ -48,6 +48,11 @@ function create_archive() {
             rm -f "$TMPFILE" && \
             cd - >/dev/null
         ;;
+    "zip")
+        cd $folder && \
+            zip "../$ARCHIVE_NAME" $RELEVANT_FILES
+        cd - >/dev/null
+        ;;
     esac
 }
 
