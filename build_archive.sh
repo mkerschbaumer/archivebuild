@@ -53,6 +53,10 @@ function create_archive() {
             zip "../$ARCHIVE_NAME" $RELEVANT_FILES
         cd - >/dev/null
         ;;
+    *)
+        >&2 echo "Unknown archive format. Exiting..."
+        exit 1
+        ;;
     esac
 }
 
