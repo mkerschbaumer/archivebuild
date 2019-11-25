@@ -27,7 +27,7 @@ included in the created archives. Then a list of (top level) folders is
 generated, based on which archives are generated. The resulting archives only
 contain files matching specific wildcards (configuration options below).
 
-> Archive naming scheme: `<archive-prefix><folder-name><archive-file-format>`
+> Archive naming scheme: `<archive-prefix><folder-name>.<archive-file-format>`
 
 General options can be configured by setting environment variables. The
 following options are available:
